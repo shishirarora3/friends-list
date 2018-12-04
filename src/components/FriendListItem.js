@@ -25,6 +25,11 @@ class FriendListItem extends Component {
                   onClick={() => this.props.deleteFriend(this.props.id)}>
             <i className="fa fa-trash" />
           </button>
+          <select value={this.props.sex} className={`btn btn-default ${styles.btnAction}`}
+                  onChange={(e) => this.props.updateSex(this.props.id, e.target.value)}>
+            <option value="M">M</option>
+            <option value="F">F</option>
+          </select>
         </div>
       </li>
     );
@@ -33,10 +38,11 @@ class FriendListItem extends Component {
 }
 
 FriendListItem.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   starred: PropTypes.bool,
-  starFriend: PropTypes.func.isRequired
+  starFriend: PropTypes.func.isRequired,
+  updateSex: PropTypes.func.isRequired
 };
 
 export default FriendListItem

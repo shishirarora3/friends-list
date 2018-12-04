@@ -20,3 +20,11 @@ export function starFriend(id) {
     id
   };
 }
+
+export function updateSex(id, sex) {
+  return {
+    type: types.UPDATE_SEX,
+    id,
+    sex
+  };
+}
