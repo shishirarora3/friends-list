@@ -45,39 +45,57 @@ function getProps() {
   const prevPage = jest.fn();
   const page = {pageNo: 1};
   const props = {
-    ...{
-      friendlist, addFriend, deleteFriend, starFriend, updateSex,
-      nextPage, prevPage,
-      page
-    }
+    friendlist, addFriend, deleteFriend, starFriend, updateSex,
+    nextPage, prevPage,
+    page
   };
-  return {prevPage, props, nextPage};
+  return {props, ...props};
 }
 
 describe('test FriendListApp', () => {
-  const {prevPage, nextPage, props} = getProps();
+  const {prevPage, nextPage, starFriend, props, deleteFriend} = getProps();
   const component = mount(
     <FriendListApp
       {...props}
     />
   );
-  const clickButtonAtIndex = (index) => component
-    .find('Pagination')
+  const clickButtonAtIndex = (componentName) => (index) => component
+    .find(componentName)
     .find('button')
     .at(index)
     .simulate('click');
+
+  const clickPaginationButtonAtIndex = clickButtonAtIndex("Pagination");
+  const clickFriendListItemButtonAtIndex = clickButtonAtIndex("FriendListItem");
+
 
   it('renders the component', () => {
     expect(toJson(component)).toMatchSnapshot();
   });
 
+  describe('test Pagination', () => {
+    it('prev button click calls prevPage action', () => {
+      clickPaginationButtonAtIndex(0);
+      expect(prevPage).toHaveBeenCalled();
+    });
+    it('next button click  nextPage action', () => {
+      clickPaginationButtonAtIndex(1);
+      expect(nextPage).toHaveBeenCalled();
+    });
+  });
 
-  it('prev button click calls prevPage action', () => {
-    expect(clickButtonAtIndex(0)).toHaveBeenCalled();
+  describe('test FriendListItem', () => {
+
+    it('star button click calls starFriend action', () => {
+      clickFriendListItemButtonAtIndex(0);
+      expect(starFriend).toHaveBeenCalled();
+    });
+    it('delete button click  deleteFriend action', () => {
+      clickFriendListItemButtonAtIndex(1);
+      expect(deleteFriend).toHaveBeenCalled();
+    });
   });
-  it('next button click  nextPage action', () => {
-    expect(clickButtonAtIndex(1)).toHaveBeenCalled();
-  });
+
 });
 
 
