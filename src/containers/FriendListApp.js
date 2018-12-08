@@ -6,7 +6,7 @@ import {addFriend, deleteFriend, starFriend, prevPage, nextPage, updateSex} from
 import {AddFriendInput, FriendList, Pagination} from '../components';
 import {getFriendsByPage} from "../selectors/FriendsByPage";
 
-class FriendListApp extends Component {
+export class FriendListApp extends Component {
 
   render() {
     const {
