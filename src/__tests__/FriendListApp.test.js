@@ -1,9 +1,9 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import {mount} from 'enzyme';
 import {FriendListApp} from '../containers/FriendListApp';
 import toJson from 'enzyme-to-json';
 
-const thunk = ({ dispatch, getState }) => next => action => {
+const thunk = ({dispatch, getState}) => next => action => {
   if (typeof action === 'function') {
     return action(dispatch, getState)
   }
@@ -17,7 +17,7 @@ const create = () => {
   };
   const next = jest.fn();
   const invoke = action => thunk(store)(next)(action);
-  return { store, next, invoke };
+  return {store, next, invoke};
 };
 
 function getProps() {
@@ -54,23 +54,29 @@ function getProps() {
   return {prevPage, props, nextPage};
 }
 
-describe('test FriendListApp', ()=>{
+describe('test FriendListApp', () => {
   const {prevPage, nextPage, props} = getProps();
   const component = mount(
     <FriendListApp
       {...props}
     />
   );
+  const clickButtonAtIndex = (index) => component
+    .find('Pagination')
+    .find('button')
+    .at(index)
+    .simulate('click');
+
   it('renders the component', () => {
     expect(toJson(component)).toMatchSnapshot();
   });
+
+
   it('prev button click calls prevPage action', () => {
-    component.find('Pagination').find('button').at(0).simulate('click');
-    expect(prevPage).toHaveBeenCalled();
+    expect(clickButtonAtIndex(0)).toHaveBeenCalled();
   });
   it('next button click  nextPage action', () => {
-    component.find('Pagination').find('button').at(1).simulate('click');
-    expect(nextPage).toHaveBeenCalled();
+    expect(clickButtonAtIndex(1)).toHaveBeenCalled();
   });
 });
 
