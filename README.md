@@ -21,5 +21,7 @@ open http://localhost:3000
 
 Edit with <a href="https://stackblitz.com/github/shishirarora3/friends-list" target=”_blank>Stackblitz Online Editor</a>
 
+Edit with  <a href="https://codesandbox.io/s/github/shishirarora3/friends-list" target="_blank">CodeSandBox Online Editor</a>
+
 
 
