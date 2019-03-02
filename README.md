@@ -17,3 +17,9 @@ open http://localhost:3000
 - You have received a working example so please do not upgrade any packages unless you really have to.
 - Please check for small things like syntax errors, since details matter.
 - Please deliver something that works, non working project is an automatic disqualification
+
+
+Edit with <a href="https://stackblitz.com/github/shishirarora3/friends-list" target=”_blank>Stackblitz Online Editor</a>
+
+
+<a href="https://zzmibzvo.github.stackblitz.io" target=”_blank> Demo </a>
