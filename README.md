@@ -19,7 +19,7 @@ open http://localhost:3000
 - Please deliver something that works, non working project is an automatic disqualification
 
 
-Edit with <a href="https://stackblitz.com/github/zzmibzvo" target=”_blank>Stackblitz Online Editor</a>
+Edit with <a href="https://stackblitz.com/github/shishirarora3/friends-list" target=”_blank>Stackblitz Online Editor</a>
 
 
-<a href="https://zzmibzvo.github.stackblitz.io" target=”_blank> Demo </a>
+
